@@ -8,5 +8,10 @@ docker_repo:
     - require_in:
         - pkg: lxc-docker
 
+docker_group:
+  group.present:
+    - name: docker
+    - addusers: {{ pillar.get('users', {}).keys() }}
+
 lxc-docker:
   pkg.installed
